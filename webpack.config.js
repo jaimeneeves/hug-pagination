@@ -4,6 +4,16 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: path.resolve(__dirname, 'src/index.js'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'HugPagination.js',
+    library: {
+      name: 'HugPaginationJS',
+      type: 'umd'
+    },
+    libraryExport: 'default',
+    publicPath: '/',
+  },
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -21,20 +31,5 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
-  },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     title: 'Development',
-  //   }),
-  // ],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'HugPagination.js',
-    library: {
-      name: 'HugPagination',
-      type: 'umd'
-    },
-    // clean: true,
-    publicPath: '/',
   },
 };
