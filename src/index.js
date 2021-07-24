@@ -5,33 +5,17 @@ class HugPagination {
     this.options = {};
 
     const defaults = {
-
       trigger: {
         selector: null
       },
-
       type: 'default',
-
       totalItems: 0,
-
-      // totalPages: 15,
-
+      totalPages: 0,
       currentPage: 1,
-
       pageSize: 10,
-
       maxPages: 10,
-
       data: []
     }
-
-    // if (!trigger) {
-    //   throw new Error('Missing input argument')
-    // }
-
-    // if (typeof trigger === 'string') {
-    //   defaults.trigger.selector = document.querySelector(trigger)
-    // }
 
     if(!totalItems) {
       throw new Error('Missing input argument')
@@ -68,6 +52,8 @@ class HugPagination {
 
     let totalPages = Math.ceil(totalItems / this.options.pageSize)
 
+    this.options.totalPages = totalPages
+
     // ensure current page isn't out of range
     if (this.options.currentPage < 1) {
       this.options.currentPage = 1
@@ -84,60 +70,46 @@ class HugPagination {
       endPage = totalPages;
     } else {
       // total pages more than max so calculate start and end pages
-      let maxPagesBeforeCurrentPage = Math.floor(this.options.maxPages / 2);
-      let maxPagesAfterCurrentPage = Math.ceil(this.options.maxPages / 2) - 1;
+      let maxPagesBeforeCurrentPage = Math.floor(this.options.maxPages / 2)
+      let maxPagesAfterCurrentPage = Math.ceil(this.options.maxPages / 2) - 1
 
       if (this.options.currentPage <= maxPagesBeforeCurrentPage) {
         // current page near the start
-        startPage = 1;
-        endPage = this.options.maxPages;
+        startPage = 1
+        endPage = this.options.maxPages
       } else if (this.options.currentPage + maxPagesAfterCurrentPage >= totalPages) {
         // current page near the end
-        startPage = totalPages - this.options.maxPages + 1;
-        endPage = totalPages;
+        startPage = totalPages - this.options.maxPages + 1
+        endPage = totalPages
       } else {
         // current page somewhere in the middle
-        startPage = this.options.currentPage - maxPagesBeforeCurrentPage;
-        endPage = this.options.currentPage + maxPagesAfterCurrentPage;
+        startPage = this.options.currentPage - maxPagesBeforeCurrentPage
+        endPage = this.options.currentPage + maxPagesAfterCurrentPage
       }
     }
 
     // calculate start and end item indexes
-    let startIndex = (this.options.currentPage - 1) * this.options.pageSize;
-    let endIndex = Math.min(startIndex + this.options.pageSize - 1, totalItems - 1);
+    let startIndex = (this.options.currentPage - 1) * this.options.pageSize
+    let endIndex = Math.min(startIndex + this.options.pageSize - 1, totalItems - 1)
 
     // create an array of pages to ng-repeat in the pager control
-    let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
+    let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i)
 
     // return object with all pager properties required by the view
     return {
-      totalItems : totalItems,
+      totalItems: totalItems,
       currentPage: this.options.currentPage,
-      pageSize   : this.options.pageSize,
-      totalPages : totalPages,
-      startPage  : startPage,
-      endPage    : endPage,
-      startIndex : startIndex,
-      endIndex   : endIndex,
-      pages      : pages,
-      data       : this.options.data,
-      trigger    : this.options.trigger
+      pageSize: this.options.pageSize,
+      data: this.options.data,
+      trigger: this.options.trigger,
+      totalPages: totalPages,
+      startPage: startPage,
+      endPage: endPage,
+      startIndex: startIndex,
+      endIndex: endIndex,
+      pages: pages
     };
   }
-
-  setPage() {
-
-  }
-
-  // nextPage() {}
-
-  // prevPage() {}
-
-  // firstPage() {}
-
-  // lastPage() {}
-
-  // setPage() {}
 
   /**
    * Trigger
