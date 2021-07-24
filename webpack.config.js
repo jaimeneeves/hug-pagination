@@ -6,7 +6,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'HugPagination.js',
+    filename: 'hugpagination.js',
     library: {
       name: 'HugPaginationJS',
       type: 'umd'
