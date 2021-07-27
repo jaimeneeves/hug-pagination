@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/hugpagination.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'hugpagination.js',
