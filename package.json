@@ -1,9 +1,10 @@
 {
   "name": "hug-pagination",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hug pagination",
-  "module": "src/index.js",
+  "module": "src/hugpagination.js",
   "main": "dist/hugpagination.js",
+  "types": "src/hugpagination.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
