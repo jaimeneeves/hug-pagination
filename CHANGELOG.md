@@ -1,3 +1,11 @@
+# v0.0.4
+
+- creation new build
+
+#### Authors: 1
+
+- Jaime Neves
+
 # v0.0.3
 
 - creation variable results for return
@@ -6,6 +14,7 @@
 #### Authors: 1
 
 - Jaime Neves
+
 # v0.0.2
 
 - add (.d.ts) file from src/hugpagination.js
