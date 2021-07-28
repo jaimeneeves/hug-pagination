@@ -28,7 +28,7 @@ A saída é um objeto contendo todas as informações necessárias para exibir a
 new HugPaginationJS(150).init();
 ```
 
-```json
+```js
 {
 	"totalItems": 150,
 	"currentPage": 1,
@@ -63,7 +63,7 @@ new HugPaginationJS(150).init();
 new HugPaginationJS(150,{ currentPage: 7 }).init();
 ```
 
-```json
+```js
 {
 	"totalItems": 150,
 	"currentPage": 7,
