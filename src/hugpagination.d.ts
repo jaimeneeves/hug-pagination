@@ -3,17 +3,15 @@ declare class HugPagination {
   constructor(totalItems: any, options: any);
   options: any;
   init(): {
-      totalItems: number;
-      currentPage: any;
-      pageSize: any;
-      data: any;
-      trigger: any;
-      totalPages: number;
-      startPage: number;
-      endPage: number;
-      startIndex: number;
-      endIndex: number;
-      pages: number[];
+    totalItems: number;
+    currentPage: any;
+    pageSize: any;
+    totalPages: number;
+    startPage: number;
+    endPage: number;
+    startIndex: number;
+    endIndex: number;
+    pages: number[];
   };
   /**
    * Pagination resolve
@@ -21,17 +19,15 @@ declare class HugPagination {
    * @returns Object
    */
   resolvePagination(totalItems: number): {
-      totalItems: number;
-      currentPage: any;
-      pageSize: any;
-      data: any;
-      trigger: any;
-      totalPages: number;
-      startPage: number;
-      endPage: number;
-      startIndex: number;
-      endIndex: number;
-      pages: number[];
+    totalItems: number;
+    currentPage: any;
+    pageSize: any;
+    totalPages: number;
+    startPage: number;
+    endPage: number;
+    startIndex: number;
+    endIndex: number;
+    pages: number[];
   };
   /**
    * Trigger

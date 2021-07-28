@@ -1,6 +1,6 @@
 {
   "name": "hug-pagination",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Hug pagination",
   "module": "src/hugpagination.js",
   "main": "dist/hugpagination.js",

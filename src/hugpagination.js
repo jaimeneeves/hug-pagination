@@ -5,9 +5,6 @@ class HugPagination {
     this.options = {};
 
     const defaults = {
-      trigger: {
-        selector: null
-      },
       type: 'default',
       totalItems: 0,
       totalPages: 0,
@@ -95,20 +92,23 @@ class HugPagination {
     // create an array of pages to ng-repeat in the pager control
     let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i)
 
-    // return object with all pager properties required by the view
-    return {
+    const results = {
       totalItems: totalItems,
       currentPage: this.options.currentPage,
       pageSize: this.options.pageSize,
-      data: this.options.data,
-      trigger: this.options.trigger,
       totalPages: totalPages,
       startPage: startPage,
       endPage: endPage,
       startIndex: startIndex,
       endIndex: endIndex,
       pages: pages
-    };
+    }
+
+    if(this.options.data.length > 0) {
+      results.data = this.options.data
+    }
+
+    return results
   }
 
   /**
