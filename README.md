@@ -33,10 +33,6 @@ new HugPaginationJS(150).init();
 	"totalItems": 150,
 	"currentPage": 1,
 	"pageSize": 10,
-	"data": [],
-	"trigger": {
-		"selector": null
-	},
 	"totalPages": 15,
 	"startPage": 1,
 	"endPage": 10,
@@ -68,10 +64,6 @@ new HugPaginationJS(150,{ currentPage: 7 }).init();
 	"totalItems": 150,
 	"currentPage": 7,
 	"pageSize": 10,
-	"data": [],
-	"trigger": {
-		"selector": null
-	},
 	"totalPages": 15,
 	"startPage": 2,
 	"endPage": 11,
@@ -88,6 +80,63 @@ new HugPaginationJS(150,{ currentPage: 7 }).init();
 		9,
 		10,
 		11
+	]
+}
+```
+
+**totalItems: 150, currentPage: 7, pageSize: 15**
+
+```js
+new HugPaginationJS(150,{ currentPage: 7, pageSize: 15 }).init();
+```
+
+```js
+{
+	"totalItems": 150,
+	"currentPage": 7,
+	"pageSize": 15,
+	"totalPages": 10,
+	"startPage": 1,
+	"endPage": 10,
+	"startIndex": 90,
+	"endIndex": 104,
+	"pages": [
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7,
+		8,
+		9,
+		10
+	]
+}
+```
+
+**totalItems: 150, currentPage: 7, pageSize: 15, maxPages: 5**
+
+```js
+new HugPaginationJS(150,{ currentPage: 7, pageSize: 15, maxPages: 5 }).init();
+```
+
+```js
+{
+	"totalItems": 150,
+	"currentPage": 7,
+	"pageSize": 15,
+	"totalPages": 10,
+	"startPage": 5,
+	"endPage": 9,
+	"startIndex": 90,
+	"endIndex": 104,
+	"pages": [
+		5,
+		6,
+		7,
+		8,
+		9
 	]
 }
 ```
