@@ -1,6 +1,6 @@
 {
   "name": "hug-pagination",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Hug pagination",
   "module": "src/hugpagination.js",
   "main": "dist/hugpagination.js",
@@ -13,7 +13,7 @@
     "build": "webpack"
   },
   "author": "Jaime Neves",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",

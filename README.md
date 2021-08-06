@@ -33,10 +33,6 @@ new HugPaginationJS(150).init();
 	"totalItems": 150,
 	"currentPage": 1,
 	"pageSize": 10,
-	"data": [],
-	"trigger": {
-		"selector": null
-	},
 	"totalPages": 15,
 	"startPage": 1,
 	"endPage": 10,
@@ -68,10 +64,6 @@ new HugPaginationJS(150,{ currentPage: 7 }).init();
 	"totalItems": 150,
 	"currentPage": 7,
 	"pageSize": 10,
-	"data": [],
-	"trigger": {
-		"selector": null
-	},
 	"totalPages": 15,
 	"startPage": 2,
 	"endPage": 11,
