@@ -91,3 +91,160 @@ new HugPaginationJS(150,{ currentPage: 7 }).init();
 	]
 }
 ```
+
+## Exemplo em ReactJS
+
+Abaixo um exemplo de como você pode usar em um componente ReactJS
+
+```js
+// App.js
+
+import './App.css';
+import React from 'react';
+import Pagination from './components/Pagination';
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    };
+
+    this.onChangePage = this.onChangePage.bind(this);
+  }
+
+  onChangePage(pageOfItems) {
+    this.setState({ data: pageOfItems });
+  }
+
+  render() {
+    return (
+      <div className="container mt-5">
+        <div className="card mb-5">
+          <div className="card-body p-4">
+            <h2 className="mb-5">ReactJS Paginate</h2>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nome</th>
+                  <th>Sobrenome</th>
+                  <th>Email</th>
+                  <th>Idade</th>
+                  <th>Cidade</th>
+                </tr>
+              </thead>
+              <tbody>
+              { this.state.data.map((item, index) =>
+                <tr key={index}>
+                  <td>{item.id}</td>
+                  <td>{item.first_name}</td>
+                  <td>{item.last_name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.age}</td>
+                  <td>{item.city}</td>
+                </tr>
+              )} 
+              </tbody>
+            </table>
+            <Pagination items={this.state.data} onChangePage={this.onChangePage} />
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default App;
+
+```
+
+```js
+
+// ./components/Pagination.js
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import HugPaginationJS from 'hug-pagination'
+import { data } from '../data'
+
+const propTypes = {
+  pageSize: PropTypes.number,
+  maxPages: PropTypes.number,
+  items: PropTypes.array.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+}
+
+const defaultProps = {
+  pageSize: 10,
+  maxPages: 10
+}
+
+class Pagination extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { pager: {} };
+  }
+  
+  componentWillMount() {
+    this.setPage(1);
+  }
+  
+  setPage(page) {
+    var params = { currentPage: page, pageSize: 7, maxPages: 10 };
+    var pager = this.state.pager;
+  
+    // data.length: total items
+    // params: options
+    pager = new HugPaginationJS(data.length, params).init();
+
+    // get new page of items from items array
+    var pageOfItems = data.slice(pager.startIndex, pager.endIndex + 1);
+  
+    // update state
+    this.setState({ pager: pager });
+
+    this.props.onChangePage(pageOfItems);
+  }
+  
+  render() {
+    var paginate = this.state.pager;
+
+    return (
+      <div className="mt-5">
+        <ul className="pagination">
+          <li className={`page-item first ${paginate.currentPage === 1 ? 'disabled' : ''}`}>
+            <a href="javascript:void(0);" className="page-link" onClick={() => this.setPage(1)}>Primeira</a>
+          </li>
+          <li className={`page-item previous ${paginate.currentPage === 1 ? 'disabled' : ''}`}>
+            <a href="javascript:void(0);" className="page-link" onClick={() => this.setPage(paginate.currentPage - 1)}>
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          {paginate.pages.map((page, index) =>
+            <li key={index} className={`page-item page-number ${paginate.currentPage === page ? 'active' : ''}`}>
+              <a href="javascript:void(0);" className="page-link" onClick={() => this.setPage(page)}>{page}</a>
+            </li>
+          )}
+          <li className={`page-item next ${paginate.currentPage === paginate.totalPages ? 'disabled' : ''}`}>
+            <a href="javascript:void(0);" className="page-link" onClick={() => this.setPage(paginate.currentPage + 1)}>
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          <li className={`page-item last ${paginate.currentPage === paginate.totalPages ? 'disabled' : ''}`}>
+            <a href="javascript:void(0);" className="page-link" onClick={() => this.setPage(paginate.totalPages)}>Última</a>
+          </li>
+        </ul>
+      </div>
+    )
+  }
+}
+
+Pagination.propTypes = propTypes;
+Pagination.defaultProps = defaultProps;
+export default Pagination;
+
+```
